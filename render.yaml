@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: arkitect-static
+    env: static
+    buildCommand: echo "No build needed - pure static site"
+    staticPublishPath: .
+    routes:
+      - src: /(.*)
+        dest: /$1
