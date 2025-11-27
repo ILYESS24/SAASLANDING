@@ -9,11 +9,12 @@
         return;
       }
 
-      // Créer le contenu HTML à injecter
+      // Créer le contenu HTML à injecter - AURION
       const contactHTML = `
         <div id="custom-contact-section" style="
           text-align: center;
           padding: 80px 20px;
+          background: #f8f8f8;
         ">
           <p style="
             font-size: 14px;
@@ -22,15 +23,27 @@
             margin-bottom: 20px;
             color: #666;
             font-weight: 500;
-          ">CONTACT</p>
+            font-family: 'Inter', sans-serif;
+          ">GET STARTED</p>
           
           <h2 style="
             font-size: 64px;
             font-weight: 700;
             line-height: 1.2;
-            margin: 0 0 40px 0;
+            margin: 0 0 20px 0;
             color: #000;
-          ">Curious about what<br>we can do for you?</h2>
+            font-family: 'Inter', sans-serif;
+          ">Ready to replace 10,000<br>tools with one platform?</h2>
+          
+          <p style="
+            font-size: 18px;
+            color: #666;
+            margin: 0 0 40px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Inter', sans-serif;
+          ">Join 5,000+ entrepreneurs who revolutionized their workflow with AURION</p>
           
           <a href="#contact" style="
             display: inline-block;
@@ -43,7 +56,8 @@
             font-weight: 500;
             transition: all 0.3s ease;
             cursor: pointer;
-          " onmouseover="this.style.background='#333'" onmouseout="this.style.background='#000'">GET IN TOUCH</a>
+            font-family: 'Inter', sans-serif;
+          " onmouseover="this.style.background='#333'" onmouseout="this.style.background='#000'">START FREE TRIAL</a>
         </div>
       `;
 
