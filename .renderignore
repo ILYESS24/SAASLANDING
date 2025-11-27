@@ -1,0 +1,10 @@
+# Ignorer tous les fichiers Node.js pour Render
+package.json
+package-lock.json
+node_modules/
+*.js
+!index.html
+!assets/
+!images/
+!fonts/
+!media/
