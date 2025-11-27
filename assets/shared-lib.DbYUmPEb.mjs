@@ -1,2 +1,0 @@
-import{__esmMin as e}from"./rolldown-runtime.JBZEuaf6.mjs";function t(e,t){return{description:`Arkitect is a modern Framer template perfectly suited for architecture or real estate businesses.`,favicon:`https://framerusercontent.com/assets/E0fLv7ZNK6vDDD50o7vA9gkiME.png`,robots:`max-image-preview:large`,socialImage:`https://framerusercontent.com/assets/OpVRVjTh3AtBvpb7Cg0Mmh1tYBw.webp`,title:`Arkitect - Architecture Framer Template`}}var n=e(()=>{});export{n as init_siteMetadata,t as metadata};
-//# sourceMappingURL=shared-lib.DbYUmPEb.mjs.map
