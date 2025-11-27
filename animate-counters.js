@@ -5,10 +5,10 @@
   let animated = false;
 
   function animateCounter(element, target, suffix = '', duration = 2000) {
-    // FORCER LA TAILLE DU COMPTEUR À ÊTRE ÉNORME
-    element.style.fontSize = '120px';
-    element.style.fontWeight = '700';
-    element.style.lineHeight = '1.1';
+    // FORCER LA TAILLE DU COMPTEUR (80px, pas gras)
+    element.style.setProperty('font-size', '80px', 'important');
+    element.style.setProperty('font-weight', '400', 'important');
+    element.style.setProperty('line-height', '1.2', 'important');
     element.style.display = 'block';
     
     // Forcer le texte à 0 d'abord
@@ -57,27 +57,27 @@
         
         console.log('🎯 Compteur trouvé:', text, 'Contexte:', context.substring(0, 50));
         
-        // FORCER LA TAILLE ÉNORME AVANT L'ANIMATION
-        el.style.setProperty('font-size', '120px', 'important');
-        el.style.setProperty('font-weight', '700', 'important');
-        el.style.setProperty('line-height', '1.1', 'important');
+        // FORCER LA TAILLE (80px, pas gras)
+        el.style.setProperty('font-size', '80px', 'important');
+        el.style.setProperty('font-weight', '400', 'important');
+        el.style.setProperty('line-height', '1.2', 'important');
         
         // Déterminer la valeur cible
         if (context.includes('project')) {
           animateCounter(el, 300, '+', 2500);
-          console.log('✅ Animation PROJECTS: 0 → 300+ (120px)');
+          console.log('✅ Animation PROJECTS: 0 → 300+ (80px, regular)');
           foundCounters++;
         } else if (context.includes('client') && !context.includes('happy')) {
           animateCounter(el, 200, '+', 2500);
-          console.log('✅ Animation CLIENTS: 0 → 200+ (120px)');
+          console.log('✅ Animation CLIENTS: 0 → 200+ (80px, regular)');
           foundCounters++;
         } else if (context.includes('happy')) {
           animateCounter(el, 100, '%', 2500);
-          console.log('✅ Animation HAPPY CLIENTS: 0% → 100% (120px)');
+          console.log('✅ Animation HAPPY CLIENTS: 0% → 100% (80px, regular)');
           foundCounters++;
         } else if (context.includes('commitment')) {
           animateCounter(el, 110, '%', 2500);
-          console.log('✅ Animation COMMITMENT: 0% → 110% (120px)');
+          console.log('✅ Animation COMMITMENT: 0% → 110% (80px, regular)');
           foundCounters++;
         }
       }
@@ -85,7 +85,7 @@
     
     if (foundCounters > 0) {
       animated = true;
-      console.log(`✅ ${foundCounters} compteurs animés avec taille 120px!`);
+      console.log(`✅ ${foundCounters} compteurs animés avec taille 80px (regular)!`);
     } else {
       console.log('❌ Aucun compteur trouvé');
     }
