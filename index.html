@@ -1,8 +1,25 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
     
+    <!-- FORCER LA POLICE INTER SUR TOUT LE SITE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <!-- CSS POUR SUPPRIMER LES BADGES ET BOUTONS DU TEMPLATE -->
     <style id="hide-framer-elements">
+      /* FORCER LA POLICE INTER PARTOUT */
+      * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      }
+      
+      body,
+      html,
+      h1, h2, h3, h4, h5, h6,
+      p, span, div, a, button,
+      input, textarea, select {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      }
       /* CORRIGER L'OPTIMISATION DES IMAGES - FORCER LE CHARGEMENT COMPLET */
       img {
         display: block !important;
