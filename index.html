@@ -20,6 +20,19 @@
       input, textarea, select {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       }
+      
+      /* RENDRE LES COMPTEURS BEAUCOUP PLUS GROS */
+      /* Cibler les éléments qui contiennent des nombres avec + ou % */
+      h1:has-text("+"),
+      h2:has-text("+"),
+      h3:has-text("+"),
+      h1:has-text("%"),
+      h2:has-text("%"),
+      h3:has-text("%") {
+        font-size: 120px !important;
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
+      }
       /* CORRIGER L'OPTIMISATION DES IMAGES - FORCER LE CHARGEMENT COMPLET */
       img {
         display: block !important;

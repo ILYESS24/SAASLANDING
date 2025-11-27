@@ -5,6 +5,12 @@
   let animated = false;
 
   function animateCounter(element, target, suffix = '', duration = 2000) {
+    // FORCER LA TAILLE DU COMPTEUR À ÊTRE ÉNORME
+    element.style.fontSize = '120px';
+    element.style.fontWeight = '700';
+    element.style.lineHeight = '1.1';
+    element.style.display = 'block';
+    
     // Forcer le texte à 0 d'abord
     element.textContent = '0' + suffix;
     
