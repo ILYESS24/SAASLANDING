@@ -57,22 +57,27 @@
         
         console.log('🎯 Compteur trouvé:', text, 'Contexte:', context.substring(0, 50));
         
+        // FORCER LA TAILLE ÉNORME AVANT L'ANIMATION
+        el.style.setProperty('font-size', '120px', 'important');
+        el.style.setProperty('font-weight', '700', 'important');
+        el.style.setProperty('line-height', '1.1', 'important');
+        
         // Déterminer la valeur cible
         if (context.includes('project')) {
           animateCounter(el, 300, '+', 2500);
-          console.log('✅ Animation PROJECTS: 0 → 300+');
+          console.log('✅ Animation PROJECTS: 0 → 300+ (120px)');
           foundCounters++;
         } else if (context.includes('client') && !context.includes('happy')) {
           animateCounter(el, 200, '+', 2500);
-          console.log('✅ Animation CLIENTS: 0 → 200+');
+          console.log('✅ Animation CLIENTS: 0 → 200+ (120px)');
           foundCounters++;
         } else if (context.includes('happy')) {
           animateCounter(el, 100, '%', 2500);
-          console.log('✅ Animation HAPPY CLIENTS: 0% → 100%');
+          console.log('✅ Animation HAPPY CLIENTS: 0% → 100% (120px)');
           foundCounters++;
         } else if (context.includes('commitment')) {
           animateCounter(el, 110, '%', 2500);
-          console.log('✅ Animation COMMITMENT: 0% → 110%');
+          console.log('✅ Animation COMMITMENT: 0% → 110% (120px)');
           foundCounters++;
         }
       }
@@ -80,7 +85,7 @@
     
     if (foundCounters > 0) {
       animated = true;
-      console.log(`✅ ${foundCounters} compteurs animés!`);
+      console.log(`✅ ${foundCounters} compteurs animés avec taille 120px!`);
     } else {
       console.log('❌ Aucun compteur trouvé');
     }
