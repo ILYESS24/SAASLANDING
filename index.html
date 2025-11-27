@@ -3,6 +3,22 @@
     
     <!-- CSS POUR SUPPRIMER LES BADGES ET BOUTONS DU TEMPLATE -->
     <style id="hide-framer-elements">
+      /* CORRIGER L'OPTIMISATION DES IMAGES - SUPPRIMER L'ESPACE GRIS */
+      img {
+        display: block !important;
+        object-fit: cover !important;
+        background: transparent !important;
+      }
+      
+      /* Supprimer les espaces gris autour des images */
+      div[style*="background"][style*="gray"],
+      div[style*="background"][style*="grey"],
+      div[style*="background: rgb(229, 229, 229)"],
+      div[style*="background-color: rgb(229, 229, 229)"] {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      
       /* SUPPRIMER LES BOUTONS "Buy Template $79" et "More Templates" en bas à droite */
       .framer-1s8yvgx-container,
       .framer-n4vz6i-container,
@@ -26,7 +42,13 @@
       
       /* Canvas pour particules de curseur */
       canvas[style*="position: fixed"],
-      canvas[style*="pointer-events: none"] {
+      canvas[style*="pointer-events: none"],
+      
+      /* SUPPRIMER LES RONDS BLANCS DANS LE FOOTER */
+      footer div[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
+      footer a[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
+      footer div[style*="border-radius: 50%"],
+      footer a[style*="border-radius: 50%"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;

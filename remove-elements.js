@@ -59,13 +59,21 @@
       display: none !important;
     }
 
-    /* SUPPRIMER TOUS LES RONDS BLANCS */
+    /* SUPPRIMER TOUS LES RONDS BLANCS ET ÉLÉMENTS DÉCORATIFS */
     div[style*="background-color:rgb(255, 255, 255)"][style*="border-radius"],
     div[style*="background-color: rgb(255, 255, 255)"][style*="border-radius"],
     div[style*="background-color:rgb(255,255,255)"][style*="border-radius"],
     a[style*="background-color:rgb(255, 255, 255)"],
-    a[style*="background-color: rgb(255, 255, 255)"] {
+    a[style*="background-color: rgb(255, 255, 255)"],
+    a[style*="background-color: white"],
+    div[style*="background: rgb(255, 255, 255)"],
+    div[style*="background:rgb(255, 255, 255)"],
+    /* Cibler spécifiquement les ronds blancs dans le footer */
+    footer div[style*="border-radius"][style*="background"],
+    footer a[style*="border-radius"][style*="background"] {
       display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
     }
 
     /* Supprimer les boutons More Templates et Made in Framer */
@@ -120,22 +128,34 @@
       count++;
     });
 
-    // 5. SUPPRIMER LES RONDS BLANCS - Chercher tous les divs
-    document.querySelectorAll('div, a, span').forEach(el => {
+    // 5. SUPPRIMER LES RONDS BLANCS - Chercher tous les divs, a, span
+    document.querySelectorAll('div, a, span, button').forEach(el => {
       try {
         const style = window.getComputedStyle(el);
         const bgColor = style.backgroundColor;
         const borderRadius = style.borderRadius;
         const width = el.offsetWidth;
         const height = el.offsetHeight;
+        const position = style.position;
 
         // Si c'est blanc avec border-radius et petite taille = SUPPRIMER
-        const isWhite = bgColor === 'rgb(255, 255, 255)' || bgColor === 'white';
+        const isWhite = bgColor === 'rgb(255, 255, 255)' || bgColor === 'white' || bgColor === 'rgba(255, 255, 255, 1)';
         const isRounded = borderRadius && (borderRadius.includes('50%') || parseFloat(borderRadius) > 5);
         const isSmall = width < 200 && height < 100;
         const isEmpty = !el.textContent.trim() || el.textContent.includes('Framer') || el.textContent.includes('Template');
+        const isFixed = position === 'fixed' || position === 'absolute';
 
-        if (isWhite && isRounded && isSmall) {
+        // SUPPRIMER si c'est un rond blanc décoratif
+        if (isWhite && isRounded && (isSmall || isEmpty)) {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.opacity = '0';
+          count++;
+        }
+
+        // SUPPRIMER si c'est dans le footer et blanc avec border-radius
+        const inFooter = el.closest('footer') !== null;
+        if (inFooter && isWhite && isRounded) {
           el.style.display = 'none';
           el.style.visibility = 'hidden';
           count++;
