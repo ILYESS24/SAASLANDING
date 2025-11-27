@@ -112,20 +112,31 @@
 
     // 2. Supprimer tous les liens vers Framer
     document.querySelectorAll('a[href*="framer.com"], a[href*="framer"]').forEach(el => {
-      el.parentNode.removeChild(el);
+      el.remove();
       count++;
     });
 
     // 3. Supprimer les éléments avec data-framer-appear-id="n0ccwk"
     document.querySelectorAll('[data-framer-appear-id="n0ccwk"]').forEach(el => {
-      el.parentNode.removeChild(el);
+      el.remove();
       count++;
     });
 
     // 4. Supprimer les éléments avec classes framer-badge
     document.querySelectorAll('.__framer-badge, [class*="framer-badge"]').forEach(el => {
-      el.parentNode.removeChild(el);
+      el.remove();
       count++;
+    });
+
+    // 4.5. SUPPRIMER TOUS LES LIENS VERS RÉSEAUX SOCIAUX (Twitter/X, Instagram, Facebook, LinkedIn)
+    document.querySelectorAll('a[href*="twitter.com"], a[href*="x.com"], a[href*="instagram.com"], a[href*="facebook.com"], a[href*="linkedin.com"], a[href*="youtube.com"], a[href*="github.com"]').forEach(el => {
+      // Vérifier si c'est un petit lien rond (icône sociale)
+      const parent = el.parentElement;
+      if (parent && (el.offsetWidth < 100 || el.offsetHeight < 100)) {
+        el.remove();
+        count++;
+        console.log('❌ Lien social supprimé:', el.href);
+      }
     });
 
     // 5. SUPPRIMER LES RONDS BLANCS - ULTRA AGRESSIF
