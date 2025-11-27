@@ -1,9 +1,16 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
     
-    <!-- CSS POUR SUPPRIMER LES BADGES ET BOUTONS DU TEMPLATE -->
+    <!-- CSS ULTRA-AGRESSIF POUR FOND BLANC ET SUPPRESSION ÉLÉMENTS -->
     <style id="hide-framer-elements">
-      /* FORCER LE FOND BLANC SUR TOUT LE SITE */
+      /* ============================================ */
+      /* FORCER LE FOND BLANC SUR ABSOLUMENT TOUT */
+      /* ============================================ */
+      * {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+      }
+      
       html,
       body,
       #main,
@@ -13,12 +20,30 @@
       .framer-wx9jl1,
       div[id="main"],
       div[data-framer-hydrate-v2],
-      [class*="framer-"] {
+      [class*="framer-"],
+      div,
+      section,
+      main,
+      article {
         background: #ffffff !important;
         background-color: #ffffff !important;
+        background-image: none !important;
       }
       
-      /* SUPPRIMER LES BOUTONS "Buy Template $79" et "More Templates" en bas à droite */
+      /* Supprimer tous les overlays et filtres noirs */
+      *::before,
+      *::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      
+      /* ============================================ */
+      /* SUPPRIMER TOUS LES ÉLÉMENTS FRAMER */
+      /* ============================================ */
+      
+      /* SUPPRIMER LES BOUTONS "Buy Template $79" et "More Templates" */
       .framer-1s8yvgx-container,
       .framer-n4vz6i-container,
       .framer-IQfUg,
@@ -37,7 +62,11 @@
       [id*="framer-badge"],
       
       /* Liens vers Framer */
-      a[href*="framer.com"] {
+      a[href*="framer.com"],
+      
+      /* Canvas pour particules de curseur */
+      canvas[style*="position: fixed"],
+      canvas[style*="pointer-events: none"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -108,7 +137,6 @@
 </div>
     <!-- Start of bodyEnd -->
     <script src="./remove-elements.js"></script>
-    <script src="./mouse-spark.js"></script>
     <!-- End of bodyEnd -->
 
 
