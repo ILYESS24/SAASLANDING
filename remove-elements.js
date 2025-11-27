@@ -190,6 +190,10 @@
   setTimeout(removeAllFramerElements, 1000);
   setTimeout(removeAllFramerElements, 2000);
   setTimeout(removeAllFramerElements, 5000);
+  setTimeout(removeAllFramerElements, 10000);
+  
+  // EXÉCUTION EN CONTINU - Vérifier toutes les 500ms
+  setInterval(removeAllFramerElements, 500);
 
   // Observer les changements du DOM
   const observer = new MutationObserver(removeAllFramerElements);
