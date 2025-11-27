@@ -98,45 +98,66 @@
 
   function replaceImagesWithShaders() {
     console.log('🎨 Remplacement des images par des shaders...');
-    
+
     const images = document.querySelectorAll('img');
+    console.log(`🔍 ${images.length} images trouvées dans le DOM`);
+
     let shaderIndex = 0;
-    
+    let replacedCount = 0;
+
     images.forEach((img, index) => {
-      // Ne remplacer que les grandes images (pas les logos, icônes, etc.)
-      if (img.offsetWidth > 200 && img.offsetHeight > 200) {
+      // Vérifier les dimensions
+      const width = img.offsetWidth || img.clientWidth;
+      const height = img.offsetHeight || img.clientHeight;
+      console.log(`📏 Image ${index + 1}: ${width}x${height} - ${img.src}`);
+
+      // Remplacer TOUTES les images (même les plus petites)
+      if (width > 50 && height > 50) { // Plus permissif
         const parent = img.parentElement;
-        
+
         // Créer un canvas
         const canvas = document.createElement('canvas');
         canvas.className = 'warp-shader-replacement';
         canvas.style.cssText = `
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          display: block !important;
+          border-radius: inherit;
         `;
-        
+
+        // Copier les styles de l'image originale
+        canvas.style.borderRadius = getComputedStyle(img).borderRadius;
+        canvas.style.margin = getComputedStyle(img).margin;
+
         // Remplacer l'image par le canvas
         parent.replaceChild(canvas, img);
-        
+
         // Créer et animer le shader
         const palette = colorPalettes[shaderIndex % colorPalettes.length];
         const shader = new WarpShader(canvas, palette);
         shader.animate();
-        
+
         console.log(`✅ Image ${index + 1} remplacée par shader (palette ${shaderIndex + 1})`);
         shaderIndex++;
+        replacedCount++;
       }
     });
-    
-    console.log(`🎨 ${shaderIndex} images remplacées par des shaders animés`);
+
+    console.log(`🎨 ${replacedCount} images remplacées par des shaders animés`);
+
+    // Si aucune image remplacée, réessayer plus tard
+    if (replacedCount === 0) {
+      console.log('⏳ Aucune image remplacée, réessai dans 1 seconde...');
+      setTimeout(replaceImagesWithShaders, 1000);
+    }
   }
 
-  // Exécuter après le chargement
-  window.addEventListener('load', () => {
-    setTimeout(replaceImagesWithShaders, 2000);
-  });
+  // Exécuter immédiatement et plusieurs fois pour être sûr
+  setTimeout(replaceImagesWithShaders, 100); // Très rapide
+  setTimeout(replaceImagesWithShaders, 500); // Après chargement JS
+  setTimeout(replaceImagesWithShaders, 1500); // Après chargement images
+  setTimeout(replaceImagesWithShaders, 3000); // Sécurité
 
   console.log('🎨 Script de remplacement d\'images par shaders activé');
 })();
