@@ -3,13 +3,21 @@
     
     <!-- CSS POUR SUPPRIMER LES BADGES ET BOUTONS DU TEMPLATE -->
     <style id="hide-framer-elements">
-      /* CORRIGER L'OPTIMISATION DES IMAGES - SUPPRIMER L'ESPACE GRIS */
+      /* CORRIGER L'OPTIMISATION DES IMAGES - FORCER LE CHARGEMENT COMPLET */
       img {
         display: block !important;
         object-fit: cover !important;
         background: transparent !important;
         width: 100% !important;
-        height: 100% !important;
+        height: auto !important;
+        min-height: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Forcer le chargement immédiat (pas de lazy loading) */
+      img[loading="lazy"] {
+        loading: eager !important;
       }
       
       /* Supprimer TOUS les espaces gris autour des images */

@@ -210,6 +210,40 @@
       } catch (e) {}
     });
 
+    // 8. FORCER LE CHARGEMENT COMPLET DE TOUTES LES IMAGES
+    document.querySelectorAll('img').forEach(img => {
+      try {
+        // Supprimer le lazy loading
+        img.loading = 'eager';
+        img.removeAttribute('loading');
+        
+        // Forcer le chargement de l'image en haute résolution
+        if (img.srcset) {
+          // Prendre la plus haute résolution du srcset
+          const srcsetParts = img.srcset.split(',');
+          const highestRes = srcsetParts[srcsetParts.length - 1].trim().split(' ')[0];
+          img.src = highestRes;
+        }
+        
+        // Forcer l'affichage
+        img.style.opacity = '1';
+        img.style.visibility = 'visible';
+        img.style.display = 'block';
+        
+        // Forcer le rechargement si l'image n'est pas complètement chargée
+        if (!img.complete) {
+          img.decode().then(() => {
+            img.style.opacity = '1';
+          }).catch(() => {
+            // Si decode échoue, forcer quand même l'affichage
+            img.style.opacity = '1';
+          });
+        }
+        
+        count++;
+      } catch (e) {}
+    });
+
     return count;
   }
 
