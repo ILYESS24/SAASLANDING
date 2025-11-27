@@ -8,13 +8,35 @@
         display: block !important;
         object-fit: cover !important;
         background: transparent !important;
+        width: 100% !important;
+        height: 100% !important;
       }
       
-      /* Supprimer les espaces gris autour des images */
+      /* Supprimer TOUS les espaces gris autour des images */
       div[style*="background"][style*="gray"],
       div[style*="background"][style*="grey"],
       div[style*="background: rgb(229, 229, 229)"],
-      div[style*="background-color: rgb(229, 229, 229)"] {
+      div[style*="background-color: rgb(229, 229, 229)"],
+      div[style*="background: rgb(204, 204, 204)"],
+      div[style*="background: rgb(211, 211, 211)"],
+      div[style*="background: rgb(220, 220, 220)"],
+      div[style*="background-color: rgb(204, 204, 204)"],
+      div[style*="background-color: rgb(211, 211, 211)"],
+      div[style*="background-color: rgb(220, 220, 220)"] {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      
+      /* Forcer les conteneurs d'images à être transparents */
+      div[class*="framer"] img,
+      div[class*="framer"] picture,
+      picture {
+        background: transparent !important;
+      }
+      
+      /* Supprimer les backgrounds gris sur les parents d'images */
+      div:has(> img),
+      div:has(> picture) {
         background: transparent !important;
         background-color: transparent !important;
       }

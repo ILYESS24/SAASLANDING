@@ -183,6 +183,33 @@
       count++;
     });
 
+    // 7. SUPPRIMER LES BACKGROUNDS GRIS SUR LES CONTENEURS D'IMAGES
+    document.querySelectorAll('div, section, article').forEach(el => {
+      try {
+        const style = window.getComputedStyle(el);
+        const bgColor = style.backgroundColor;
+        
+        // Si c'est un gris (rgb entre 200-240)
+        const rgbMatch = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+        if (rgbMatch) {
+          const r = parseInt(rgbMatch[1]);
+          const g = parseInt(rgbMatch[2]);
+          const b = parseInt(rgbMatch[3]);
+          
+          // Si c'est un gris (toutes les valeurs RGB similaires et entre 200-240)
+          if (r === g && g === b && r >= 200 && r <= 240) {
+            // Vérifier si l'élément contient une image
+            const hasImage = el.querySelector('img, picture');
+            if (hasImage) {
+              el.style.background = 'transparent';
+              el.style.backgroundColor = 'transparent';
+              count++;
+            }
+          }
+        }
+      } catch (e) {}
+    });
+
     return count;
   }
 
