@@ -128,7 +128,7 @@
       count++;
     });
 
-    // 5. SUPPRIMER LES RONDS BLANCS - Chercher tous les divs, a, span
+    // 5. SUPPRIMER LES RONDS BLANCS - ULTRA AGRESSIF
     document.querySelectorAll('div, a, span, button').forEach(el => {
       try {
         const style = window.getComputedStyle(el);
@@ -144,26 +144,23 @@
         const isSmall = width < 200 && height < 100;
         const isEmpty = !el.textContent.trim() || el.textContent.includes('Framer') || el.textContent.includes('Template');
         const isFixed = position === 'fixed' || position === 'absolute';
+        const isCircle = width === height && isRounded; // Détection des cercles parfaits
 
         // SUPPRIMER si c'est un rond blanc décoratif
-        if (isWhite && isRounded && (isSmall || isEmpty)) {
-          el.style.display = 'none';
-          el.style.visibility = 'hidden';
-          el.style.opacity = '0';
+        if (isWhite && isRounded && (isSmall || isEmpty || isCircle)) {
+          el.remove(); // SUPPRIMER COMPLÈTEMENT DU DOM
           count++;
         }
 
-        // SUPPRIMER si c'est dans le footer et blanc avec border-radius
-        const inFooter = el.closest('footer') !== null;
-        if (inFooter && isWhite && isRounded) {
-          el.style.display = 'none';
-          el.style.visibility = 'hidden';
+        // SUPPRIMER tous les petits éléments blancs ronds (30-80px)
+        if (isWhite && isRounded && width >= 30 && width <= 80 && height >= 30 && height <= 80) {
+          el.remove();
           count++;
         }
 
         // Supprimer spécifiquement les boutons Framer
         if (el.textContent && (el.textContent.includes('Made in Framer') || el.textContent.includes('More Templates'))) {
-          el.parentNode.removeChild(el);
+          el.remove();
           count++;
         }
       } catch (e) {}

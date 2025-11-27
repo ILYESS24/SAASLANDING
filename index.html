@@ -44,11 +44,20 @@
       canvas[style*="position: fixed"],
       canvas[style*="pointer-events: none"],
       
-      /* SUPPRIMER LES RONDS BLANCS DANS LE FOOTER */
-      footer div[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
-      footer a[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
-      footer div[style*="border-radius: 50%"],
-      footer a[style*="border-radius: 50%"] {
+      /* SUPPRIMER TOUS LES RONDS BLANCS PARTOUT (FOOTER ET AILLEURS) */
+      div[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
+      a[style*="border-radius"][style*="background-color: rgb(255, 255, 255)"],
+      div[style*="border-radius: 50%"][style*="background"],
+      a[style*="border-radius: 50%"][style*="background"],
+      div[style*="border-radius"][style*="background: rgb(255, 255, 255)"],
+      a[style*="border-radius"][style*="background: rgb(255, 255, 255)"],
+      /* Cibler les petits éléments ronds blancs */
+      div[style*="width: 48px"][style*="height: 48px"][style*="background"],
+      div[style*="width: 40px"][style*="height: 40px"][style*="background"],
+      div[style*="width: 56px"][style*="height: 56px"][style*="background"],
+      a[style*="width: 48px"][style*="height: 48px"],
+      a[style*="width: 40px"][style*="height: 40px"],
+      a[style*="width: 56px"][style*="height: 56px"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
